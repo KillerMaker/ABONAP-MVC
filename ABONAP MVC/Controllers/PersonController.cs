@@ -36,14 +36,13 @@ namespace ABONAP_MVC.Controllers
 
         public IActionResult Update(int id) 
         {
-            TempData["Id"] = id;
+           TempData["Id"] = id;
            return View("Update"); 
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateInDB()
+        public async Task<IActionResult> UpdateInDB(int id)
         {
-            int id = int.Parse(TempData["Id"].ToString());
             string names = Request.Form["Names"].ToString();
             string lastName1 = Request.Form["LastName1"].ToString();
             string lastName2 = Request.Form["LastName2"].ToString();

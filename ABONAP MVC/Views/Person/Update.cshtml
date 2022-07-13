@@ -43,7 +43,7 @@
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" onclick = asp-action = "UpdateInDb"/>
+                <input type="submit" value="Save" class="btn btn-primary" onclick = asp-action = "UpdateInDb" asp-route-id="@TempData["Id"]"/>
             </div>
         </form>
     </div>
