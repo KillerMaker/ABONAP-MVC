@@ -1,0 +1,77 @@
+﻿@model IAsyncEnumerable<ABONAP_MVC.Models.Person>
+
+@{
+    ViewData["Title"] = "Show";
+}
+
+<h1>Show</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Nombres
+            </th>
+            <th>
+                Primer Apellido
+            </th>
+            <th>
+                Segundo Apellido
+            </th>
+            <th>
+                Fecha de Creacion
+            </th>
+            <th>
+                Fecha de Actualizacion
+            </th>
+            <th>
+                Codigo
+            </th>
+            <th>
+                Estado
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@await foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.Names
+            </td>
+            <td>
+                @item.LastName1
+            </td>
+            <td>
+                @item.LastName2
+            </td>
+            <td>
+                @item.CreateDate
+            </td>
+            <td>
+                @item.UpdateDate
+            </td>
+            <td>
+                @item.Code
+            </td>
+            <td>
+                @item.Status
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
