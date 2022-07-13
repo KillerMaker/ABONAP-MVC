@@ -54,7 +54,7 @@ namespace ABONAP_MVC.DataBase.Handlers
 
         public override string GetUpdateQuery(int Id) =>
             @$"UPDATE PERSONA SET 
-                NOMBRES = @NAMES, PRIMER_APELLIDO = @LAST_NAME1, SEGUNDO_APELLIDO = LAST_NAME2,
+                NOMBRES = @NAMES, PRIMER_APELLIDO = @LAST_NAME1, SEGUNDO_APELLIDO = @LAST_NAME2,
                 CODIGO = @CODE, ESTADO = @STATUS, FECHA_ACTUALIZACION = @UPDATE_DATE
              WHERE ID_PERSONA = {Id}";
 

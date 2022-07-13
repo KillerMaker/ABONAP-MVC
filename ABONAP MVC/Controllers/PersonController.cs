@@ -26,24 +26,35 @@ namespace ABONAP_MVC.Controllers
             string lastName1 = Request.Form["LastName1"].ToString();
             string lastName2 = Request.Form["LastName2"].ToString();
             string code = Request.Form["Code"].ToString();
-            //bool status = bool.Parse(Request.Form["Status"].ToString());
 
-            Person person = new Person
-                (
-                    null,
-                    names,
-                    lastName1,
-                    lastName2,
-                    code,
-                    true
-                );
+            Person person = new Person(null,names,lastName1,lastName2,code,true);
 
-            await dbAdapter.RunCommand(person,DbOperation.Insert,new PersonHandler());
+            await dbAdapter.RunCommand(person, DbOperation.Insert, new PersonHandler());
 
             return RedirectToAction("Show");
         }
 
-        public IActionResult Update(int id) => View("Update");
+        public IActionResult Update(int id) 
+        {
+            TempData["Id"] = id;
+           return View("Update"); 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateInDB()
+        {
+            int id = int.Parse(TempData["Id"].ToString());
+            string names = Request.Form["Names"].ToString();
+            string lastName1 = Request.Form["LastName1"].ToString();
+            string lastName2 = Request.Form["LastName2"].ToString();
+            string code = Request.Form["Code"].ToString();
+
+            Person person = new Person(id, names, lastName1, lastName2, code, true);
+
+            await dbAdapter.RunCommand(person, DbOperation.Update, new PersonHandler());
+
+            return RedirectToAction("Show");
+        }
         
     }
 }
