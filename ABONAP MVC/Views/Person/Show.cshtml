@@ -67,9 +67,21 @@
                 @item.Status
             </td>
             <td>
-                @Html.ActionLink("Edit", "Update", new {  id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Update", new {
+                        id = item.Id, 
+                        names = item.Names,
+                        lastName1 = item.LastName1,
+                        lastName2 = item.LastName2,
+                        code = item.Code,
+                        status = item.Status}) |
+               
+                @Html.ActionLink("Delete", "Delete", new {
+                        id = item.Id, 
+                        names = item.Names,
+                        lastName1 = item.LastName1,
+                        lastName2 = item.LastName2,
+                        code = item.Code,
+                        status = item.Status})
             </td>
         </tr>
 }

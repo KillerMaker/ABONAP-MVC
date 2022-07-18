@@ -34,10 +34,11 @@ namespace ABONAP_MVC.Controllers
             return RedirectToAction("Show");
         }
 
-        public IActionResult Update(int id) 
+        public IActionResult Update(int id, string names, string lastName1, string lastName2, string code, bool status) 
         {
            TempData["Id"] = id;
-           return View("Update"); 
+           Person person = new Person(id, names, lastName1, lastName2, code, status);
+           return View("Update",person); 
         }
 
         [HttpPost]
@@ -54,6 +55,13 @@ namespace ABONAP_MVC.Controllers
 
             return RedirectToAction("Show");
         }
-        
+
+        public async Task<IActionResult> Delete(int id, string names, string lastName1, string lastName2, string code, bool status)
+        {
+            Person person = new Person(id, names, lastName1, lastName2, code, status);
+            await dbAdapter.RunCommand(person, DbOperation.Delete, new PersonHandler());
+            return RedirectToAction("Show");
+        }
+
     }
 }

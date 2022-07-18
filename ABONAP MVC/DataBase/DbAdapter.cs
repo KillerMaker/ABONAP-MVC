@@ -23,7 +23,7 @@ namespace ABONAP_MVC.Data_Base
             }
         }
 
-        public async Task RunCommand<T>(T obj,DbOperation operation, BaseHandler<T> handler) where T : BaseEntity
+        public async Task RunCommand<T>(T obj, DbOperation operation, BaseHandler<T> handler) where T : BaseEntity
         {
             string query = "";
             switch(operation)
