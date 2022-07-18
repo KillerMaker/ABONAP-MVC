@@ -7,10 +7,9 @@ namespace ABONAP_MVC.DataBase.Handlers
     {
         public override string GetDeleteQuery(int id) => "DELETE FROM DOCUMENT";
 
-        public override string GetInsertionQuery()
-        {
-            throw new NotImplementedException();
-        }
+        public override string GetInsertionQuery() =>
+            @"INSERT INTO DOCUMENTO(DESCRIPCION,ESTADO,ID_TIPO_DOCUMENTO)
+                VALUES(@DESCRIPTION,@STATUS,@DOCUMENT_TYPE);";
 
         public override string GetSelectQuery()
         {
