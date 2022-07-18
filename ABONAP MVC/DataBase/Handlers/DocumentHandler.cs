@@ -5,10 +5,7 @@ namespace ABONAP_MVC.DataBase.Handlers
 {
     public class DocumentHandler : BaseHandler<Document>
     {
-        public override string GetDeleteQuery(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public override string GetDeleteQuery(int id) => "DELETE FROM DOCUMENT";
 
         public override string GetInsertionQuery()
         {
